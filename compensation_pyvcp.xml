@@ -1,0 +1,58 @@
+<pyvcp>
+	<labelframe text="Compensation">
+
+		<vbox>
+			<button>
+				<halpin>"reset"</halpin>
+				<text>"Reset"</text> 
+			</button>
+			<checkbutton>
+				<halpin>"enable"</halpin>
+				<text>"Enable"</text>
+			</checkbutton>
+	<labelframe text="Enable">
+			<rectled>
+				<halpin>"enable-led"</halpin>
+				<height>"50"</height>
+				<width>"100"</width>
+				<on_color>"green"</on_color>
+				<off_color>"red"</off_color>
+			</rectled>
+	</labelframe>
+	<labelframe text="Reset">
+			<rectled>
+				<halpin>"reset-led"</halpin>
+				<height>"10"</height>
+				<width>"100"</width>
+				<on_color>"green"</on_color>
+				<off_color>"red"</off_color>
+			</rectled>
+	</labelframe>
+	<labelframe text="Current compensation">
+		<number>
+			<halpin>"current-comp"</halpin>
+			<font>("Helvetica",24)</font>
+			<format>"+4.4f"</format>
+		</number>
+	</labelframe>
+
+	<labelframe text="Current Z">
+		<number>
+			<halpin>"current-z"</halpin>
+			<font>("Helvetica",24)</font>
+			<format>"+4.4f"</format>
+		</number>
+	</labelframe>
+	<labelframe text="Error">
+			<rectled>
+				<halpin>"error-led"</halpin>
+				<height>"100"</height>
+				<width>"100"</width>
+				<on_color>"green"</on_color>
+				<off_color>"red"</off_color>
+			</rectled>
+	</labelframe>
+
+		</vbox>
+	</labelframe>
+</pyvcp>

@@ -1,0 +1,50 @@
+# Include your customized HAL commands here
+# The commands in this file are run after the AXIS GUI (including PyVCP panel) starts
+loadrt or2 count=2
+loadrt sum2 count=1
+loadusr -Wn compensation python compensation.py filename.txt
+
+addf or2.0 servo-thread
+addf or2.1 servo-thread
+addf sum2.0 servo-thread
+
+#net axis.0.motor-pos-cmd => compensation.x-map
+#net axis.1.motor-pos-cmd => compensation.y-map
+
+net xpos-cmd => compensation.x-map
+net ypos-cmd => compensation.y-map
+
+# отключаем сигналы управления обратной связи оси Z 
+unlinkp stepgen.2.position-cmd
+unlinkp axis.2.motor-pos-cmd
+unlinkp stepgen.2.position-cmd
+unlinkp axis.2.motor-pos-fb
+
+# заново назначаем сингалы упралвления и обратной связи
+net zpos-cmd <= axis.2.motor-pos-cmd
+net zpos-cmd => axis.2.motor-pos-fb
+
+net zpos-cmd => sum2.0.in0
+net comp compensation.out => sum2.0.in1
+net zpos-cmd-comp sum2.0.out => stepgen.2.position-cmd
+
+# это мы делаем так, что бы M62 P0 (цифровой вывод №1) включал компенсацию 
+net dout-00 <= motion.digital-out-00 
+net dout-00 => or2.0.in0
+net pyvcp-enable pyvcp.enable => or2.0.in1
+net comp-enable or2.0.out compensation.enable  
+
+# это мы настраиваем функцию reset.
+net dout-01 <= motion.digital-out-01 
+net dout-01 => or2.1.in0
+net pyvcp-reset pyvcp.reset => or2.1.in1
+net comp-reset or2.1.out compensation.reset  
+
+#это мы настраиваем led
+net comp-enable => pyvcp.enable-led
+net comp-reset => pyvcp.reset-led
+net comp-error compensation.error => pyvcp.error-led
+
+#это мы настраиваем отображение
+net zpos-cmd-comp => pyvcp.current-z
+net comp => pyvcp.current-comp
