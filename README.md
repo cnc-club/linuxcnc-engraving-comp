@@ -26,7 +26,7 @@ Operate
 ===================
 
 1. Scan the surface using Gcode like this:
-
+<pre>
 M64 P0  (turn off compensation)
 T1 M6 (Install probe)
 #<h> = 90 
@@ -58,6 +58,7 @@ o101 while [#<y> LT #<h>+#<y0>]
 o101 endwhile
 
 (PROBECLOSE)
+</pre>
 
 2. Reset component's height map by pressing Reset button at pyvcp panel or throught Gcode
 M65 P1 (Reset compenstation)
