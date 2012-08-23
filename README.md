@@ -38,9 +38,7 @@ T1 M6 (Install probe)
 #&lt;latch_feed&gt; = 1
 #&lt;safe_z&gt; = 3
 #&lt;search_z&gt; = -3
-
 (PROBEOPEN filename.txt)
-
 G0 #&lt;safe_z&gt;
 #&lt;y&gt; = #&lt;y0&gt;
 o101 while [#&lt;y&gt; LT #&lt;h&gt;+#&lt;y0&gt;]
@@ -56,7 +54,6 @@ o101 while [#&lt;y&gt; LT #&lt;h&gt;+#&lt;y0&gt;]
   o102 endwhile
   #&lt;y&gt; = [#&lt;y&gt;+#&lt;step&gt;]
 o101 endwhile
-
 (PROBECLOSE)
 </pre>
 
