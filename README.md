@@ -29,32 +29,32 @@ Operate
 <pre>
 M64 P0  (turn off compensation)
 T1 M6 (Install probe)
-#<h> = 90 
-#<w> = 90 
-#<x0> = 110
-#<y0> = 90
-#<step> = 20
-#<search_feed> = 100
-#<latch_feed> = 1
-#<safe_z> = 3
-#<search_z> = -3
+#&lt;h&gt; = 90 
+#&lt;w&gt; = 90 
+#&lt;x0&gt; = 110
+#&lt;y0&gt; = 90
+#&lt;step&gt; = 20
+#&lt;search_feed&gt; = 100
+#&lt;latch_feed&gt; = 1
+#&lt;safe_z&gt; = 3
+#&lt;search_z&gt; = -3
 
 (PROBEOPEN filename.txt)
 
-G0 #<safe_z>
-#<y> = #<y0>
-o101 while [#<y> LT #<h>+#<y0>]
-  #<x> = #<x0>
-  o102 while [#<x> LT #<w>+#<x0>]
-    G0 X#<x> Y#<y> 
-    F[#<search_feed>]
-    G38.3 [Z#<search_z>]
-    F[#<latch_feed>]
-    G38.5 [Z#<safe_z>]
-   G0 #<safe_z> 
-    #<x> = [#<x>+#<step>]
+G0 #&lt;safe_z&gt;
+#&lt;y&gt; = #&lt;y0&gt;
+o101 while [#&lt;y&gt; LT #&lt;h&gt;+#&lt;y0&gt;]
+  #&lt;x&gt; = #&lt;x0&gt;
+  o102 while [#&lt;x&gt; LT #&lt;w&gt;+#&lt;x0&gt;]
+    G0 X#&lt;x&gt; Y#&lt;y&gt; 
+    F[#&lt;search_feed&gt;]
+    G38.3 [Z#&lt;search_z&gt;]
+    F[#&lt;latch_feed&gt;]
+    G38.5 [Z#&lt;safe_z&gt;]
+   G0 #&lt;safe_z&gt; 
+    #&lt;x&gt; = [#&lt;x&gt;+#&lt;step&gt;]
   o102 endwhile
-  #<y> = [#<y>+#<step>]
+  #&lt;y&gt; = [#&lt;y&gt;+#&lt;step&gt;]
 o101 endwhile
 
 (PROBECLOSE)
