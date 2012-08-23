@@ -1,0 +1,33 @@
+o<scan-surface> sub
+M64 P0  (turn off compensation)
+T1 M6 (Install probe)
+#<h> = 90 
+#<w> = 90 
+#<x0> = 110
+#<y0> = 90
+#<step> = 20
+#<search_feed> = 100
+#<latch_feed> = 1
+#<safe_z> = 3
+#<search_z> = -3
+
+(PROBEOPEN filename.txt)
+
+G0 #<safe_z>
+#<y> = #<y0>
+o101 while [#<y> LT #<h>+#<y0>]
+  #<x> = #<x0>
+  o102 while [#<x> LT #<w>+#<x0>]
+    G0 X#<x> Y#<y> 
+    F[#<search_feed>]
+    G38.3 [Z#<search_z>]
+    F[#<latch_feed>]
+    G38.5 [Z#<safe_z>]
+   G0 #<safe_z> 
+    #<x> = [#<x>+#<step>]
+  o102 endwhile
+  #<y> = [#<y>+#<step>]
+o101 endwhile
+
+(PROBECLOSE)
+o<scan-surface> endsub
