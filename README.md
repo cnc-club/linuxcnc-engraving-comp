@@ -7,6 +7,7 @@ to Z axis to eliminate surfase inflattness.
 Find details at http://www.cnc-club.ru 
 (http://cnc-club.ru/forum/viewtopic.php?f=15&t=521&start=220&p=19525#p19525)
 
+You might like another method by Hartmut Semken: http://www.hase.net/CNC/CNC/PCB_milling.html
 
 Install
 ===================
